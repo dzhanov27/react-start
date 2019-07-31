@@ -5,14 +5,6 @@ import User from './component/User'
 
 class App extends React.Component {
 
-  // render(){
-  //   return(
-  //     <div className="person">
-  //       <CountryContainer />
-  //     </div>
-  //   );
-  // }
-
   state = {
     person: [{
       name: 'A',
@@ -20,46 +12,50 @@ class App extends React.Component {
     },{
       name: 'B',
       age: 19
+    },{
+      name: 'C',
+      age: 21
+    },{
+      name: 'D',
+      age: 23
+    },{
+      name: 'E',
+      age: 22
     }],
   }
 
-  changeName = () => {
-    this.setState({
-      person: [
-        {name: 'Mike', age: 25},
-        {name: 'Alex', age: 30}
-      ]
-    })
-  }
+  deletePerson = (index) => {
+    let person = this.state.person;
+    person.splice(index,1);
 
-  increaseAge = () => {
-    let person = this.state.person.map(item => {
-      return {
-        name: item.name,
-        age: item.age + 1
-      }
-    })
-
-    this.setState({person})
+    this.setState({person});
   }
 
   render(){
     return(
-      <div className="person">
-        <User 
-          name = {this.state.person[0].name}
-          age = {this.state.person[0].age}
-          changeFunc = {this.changeName}
-          ageFunc = {this.increaseAge}
-        />
-        <User 
-          name = {this.state.person[1].name}
-          age = {this.state.person[1].age}
-          changeFunc = {this.changeName}
-        />
+      <div className="App">
+        {this.state.person.map((item, index) => {
+          return (
+            <User
+              key = {index}
+              name = {item.name}
+              age = {item.age}
+              id = {index}
+              deletePerson = {() => this.deletePerson(index)}
+            />
+          );
+        })}
       </div>
     );
   }
 }
+
+  // render(){
+  //   return(
+  //     <div className="person">
+  //       <CountryContainer />
+  //     </div>
+  //   );
+  // }
 
 export default App;
