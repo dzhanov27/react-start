@@ -2,9 +2,11 @@ import React from 'react';
 
 function Country(props) {
   return(
-    <li>Country name: {props.data.name}
+    <li class="item"><h2>Country name: {props.data.name}</h2>
     <p>Country capital: {props.data.capital}</p>
-    <img src={props.data.falg} alt={props.data.name}></img>
+    <p>Country population: {props.data.population} </p>
+    <img class="flag" src={props.data.flag} alt={props.data.name}></img>
+    <button onClick={props.deletePerson}>Delete</button>
     </li>
   );
 }

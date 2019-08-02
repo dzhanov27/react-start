@@ -1,0 +1,15 @@
+.modal {
+  width: 100%;
+  height: 100vw;
+  background-color: #242424;
+  opacity: 0.3;
+  position: fixed;
+  justify-content: center;
+  display: flex;
+}
+
+.modal_window {
+  width: 70vw;
+  height: 60vh;
+  background-color: #fff;
+}
